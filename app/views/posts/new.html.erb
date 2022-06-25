@@ -1,0 +1,13 @@
+<h1> Uploading... New Margot</h2>
+<%= form_with(model: @post, local: true) do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+        <%= f.submit "Upload this Margot" %>
+    </div>
+<% end %>
