@@ -3,3 +3,7 @@
 
     <%= image_tag @post.image %>
 </div>
+
+<ul class="actions">
+    <li><%= link_to "Return to the Emporium...", posts_path %></li>
+    <li><%= link_to "Edit this Margot", edit_post_path(@post) %></li>

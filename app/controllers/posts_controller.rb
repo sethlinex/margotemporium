@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
+    before_action :set_post, only: %i(show edit update destroy)
+
     def index
+        @posts = Post.all
     end
 
     def show
-        @post = Post.find(params[:id])
     end
 
     def new
@@ -20,7 +22,24 @@ class PostsController < ApplicationController
         end
     end
 
+    def edit
+    end
+
+    def update
+        @post.update(post_params)
+
+        flash[:notice] = "This Margot's name has been changed!"
+        redirect_to @post
+    end
+
     private
+
+    def set_post
+        @post = Post.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "This Margot does not exist!"
+        redirect_to posts_path
+    end
 
     def post_params
         params.require(:post).permit(:name, :image)

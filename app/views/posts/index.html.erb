@@ -1,1 +1,10 @@
+<h1> Welcome to the Margot Emporium! </h1>
+
 <%= link_to "New Margot", new_post_path %>
+
+<div class="posts">
+    <% @posts.each do |post| %>
+        <%= link_to (image_tag post.image), post %>
+        <%= link_to post.name, post %>
+    <% end %>
+</div>
