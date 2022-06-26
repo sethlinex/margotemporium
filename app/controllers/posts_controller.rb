@@ -32,6 +32,13 @@ class PostsController < ApplicationController
         redirect_to @post
     end
 
+    def destroy
+        @post.destroy
+        
+        flash[:notice] = "Margot successfully removed."
+        redirect_to posts_path
+    end
+
     private
 
     def set_post
