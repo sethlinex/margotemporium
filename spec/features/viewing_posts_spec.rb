@@ -8,7 +8,7 @@ RSpec.feature "Margot posts can be seen on the homepage" do
 
         fill_in "Name", with: "Chi Ball"
         attach_file("Image", "spec/fixtures/logo.jpg")
-        click_button "Upload this Margot"
+        click_button "Create Post"
         expect(page). to have_content "This Margot has been added!"
 
         click_link "Return to the Emporium..."

@@ -11,6 +11,9 @@
   </head>
 
   <body>
+  
+  <%= link_to "Sign up", new_user_registration_path %>
+
     <% flash.each do |key, message| %>
       <div><%= message %></div>
     <% end %>

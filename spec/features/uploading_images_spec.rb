@@ -8,7 +8,7 @@ RSpec.feature "users can upload images of Margot" do
 
         fill_in "Name", with: "Chi Ball"
         attach_file("Image", "spec/fixtures/logo.jpg")
-        click_button "Upload this Margot"
+        click_button "Create Post"
 
         expect(page). to have_content "This Margot has been added!"
 
