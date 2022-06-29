@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Projectmargot</title>
+    <title> The Margot Emporium </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,9 +11,17 @@
   </head>
 
   <body>
-  
-  <%= link_to "Sign up", new_user_registration_path %>
-
+  <% unless user_signed_in? %>
+  <ul class="actions">
+    <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+    <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+  </ul>
+  <% end %>
+  <p>
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.username %>
+  <% end %>
+  </p>
     <% flash.each do |key, message| %>
       <div><%= message %></div>
     <% end %>
