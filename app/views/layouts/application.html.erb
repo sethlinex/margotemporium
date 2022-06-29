@@ -20,6 +20,8 @@
   <p>
   <% if user_signed_in? %>
     Signed in as <%= current_user.username %>
+
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %>
   <% end %>
   </p>
     <% flash.each do |key, message| %>
