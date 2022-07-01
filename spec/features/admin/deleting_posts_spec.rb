@@ -1,6 +1,10 @@
 require "rails_helper"
 
-RSpec.feature "You can delete existing Margots" do
+RSpec.feature "Admins can delete existing Margots" do
+    before do
+        login_as(FactoryBot.create(:user, :admin))
+    end
+
     scenario "successfully" do
         FactoryBot.create(:post)
 

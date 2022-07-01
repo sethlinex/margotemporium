@@ -1,8 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "Margot posts can be seen on the homepage" do
-    scenario "and clicking the image or name will take you to the post" do
+    before do
+        login_as(FactoryBot.create(:user, :admin))
         visit "/"
+    end
+
+    scenario "and clicking the image or name will take you to the post" do
 
         click_link "New Margot"
 

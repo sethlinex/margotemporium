@@ -1,12 +1,16 @@
 require "rails_helper"
 
-RSpec.feature "You can edit existing Margots" do
-    scenario "to change the name (for now)" do
+RSpec.feature "Admins can edit existing Margots" do
+    before do
+        login_as(FactoryBot.create(:user, :admin))
         FactoryBot.create(:post)
 
         visit "/"
         click_link "Example Margot"
-
+    end
+    
+    scenario "to change the name (for now)" do
+        
         within(".post") do
             expect(page).to have_content "Example Margot"
             expect(page).to have_css("img[src*='logo.jpg']")

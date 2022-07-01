@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: %i(show edit update destroy)
+    before_action :set_post, only: %i(show)
 
     def index
         @posts = Post.all
@@ -8,36 +8,6 @@ class PostsController < ApplicationController
     def show
     end
 
-    def new
-        @post = Post.new 
-    end
-
-    def create
-        @post = Post.new(post_params)
-
-        if @post.save
-            flash[:notice] = "This Margot has been added!"
-            redirect_to @post
-        else
-        end
-    end
-
-    def edit
-    end
-
-    def update
-        @post.update(post_params)
-
-        flash[:notice] = "This Margot's name has been changed!"
-        redirect_to @post
-    end
-
-    def destroy
-        @post.destroy
-        
-        flash[:notice] = "Margot successfully removed."
-        redirect_to posts_path
-    end
 
     private
 
