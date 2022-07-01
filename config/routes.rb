@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts, only: [:index, :show]
+
+  scope path: "posts/:post_id", as: :post do
+    resources :comments, only: [:create]
+  end
 end

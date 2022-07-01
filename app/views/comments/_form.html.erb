@@ -1,0 +1,11 @@
+<header>
+    <h3> New Comment... Be Nice! </h3>
+</header>
+
+<%= form_with model: [post, comment], local: true do |f| %>
+    <p>
+        <%= f.label :text %>
+        <%= f.text_area :text %>
+    </p>
+        <%= f.submit %>
+<% end %>

@@ -3,12 +3,29 @@
 
     <%= image_tag @post.image %>
 </div>
-<% admins_only do %>
+
+<div class="comments">
+    <header>
+        <h3> Comments: </h3>
+    </header>
+
+    <% comments = @post.comments.persisted.ordered %>
+    <% if comments.any? %>
+        <%= render comments %>
+    <% else %>
+        <p> No comments yet! </p>
+    <% end %>
+
+    <%= render "comments/form", post: @post, comment: @comment %>
+</div>
+
     <ul class="actions">
         <li><%= link_to "Return to the Emporium...", posts_path %></li>
-        <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
-        <li><%= link_to "Remove this Margot", admin_post_path(@post),
-        method: :delete,
-        data: { confirm: "Do you want to remove this Margot?" } %></li>
+
+        <% admins_only do %>
+            <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
+            <li><%= link_to "Remove this Margot", admin_post_path(@post),
+            method: :delete,
+            data: { confirm: "Do you want to remove this Margot?" } %></li>
+        <% end %>
     </ul>
-<% end %>
