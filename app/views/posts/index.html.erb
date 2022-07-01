@@ -1,7 +1,10 @@
 <h1> Welcome to the Margot Emporium! </h1>
-<ul class="actions">
-    <li><%= link_to "New Margot", new_admin_post_path %></li>
-</ul>
+
+<% admins_only do %>
+    <ul class="actions">
+        <li><%= link_to "New Margot", new_admin_post_path %></li>
+    </ul>
+<% end %>
 
 <div class="posts">
     <% @posts.each do |post| %>
