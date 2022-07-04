@@ -1,5 +1,6 @@
 class Admin::CommentsController < Admin::ApplicationController
-  before_action :set_post, only: %i(delete)
+  before_action :set_post, only: %i(destroy)
+
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
