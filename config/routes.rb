@@ -1,24 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root "posts#index"
+
+  resources :posts, only: [:index, :show] do
+    resources :comments, only: [:create]
+  end
 
   namespace :admin do
     root "application#index"
 
     resources :posts, except: [:index, :show] do
-      resources :comments, only: [:delete]
+      resources :comments, only: [:destroy]
     end
-
-    scope path: "posts/:post_id", as: :delete do
-      resources :comments, only: [:delete]
-      delete "comments/delete"
-    end
-  end
-
-  devise_for :users
-  root "posts#index"
-
-  resources :posts, only: [:index, :show]
-
-  scope path: "posts/:post_id", as: :post do
-    resources :comments, only: [:create]
   end
 end
