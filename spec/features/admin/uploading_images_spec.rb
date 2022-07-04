@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.feature "admins can upload images of Margot" do
     before do
-        visit "/"
         login_as(FactoryBot.create(:user, :admin))
     end
     
     scenario "with only a name and image" do
-
+        
+        visit "/"
         click_link "New Margot"
 
         fill_in "Name", with: "Chi Ball"
