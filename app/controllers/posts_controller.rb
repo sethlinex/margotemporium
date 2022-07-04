@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: %i(show)
+    before_action :set_post, only: %i(show like)
 
     def index
         @posts = Post.all
@@ -9,6 +9,10 @@ class PostsController < ApplicationController
         @comment = @post.comments.build
     end
 
+    def like
+        @post.like_by current_user
+        redirect_to @post
+    end
 
     private
 

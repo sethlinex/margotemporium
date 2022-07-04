@@ -4,6 +4,12 @@
     <%= image_tag @post.image %>
 </div>
 
+<div class="votes">
+    <%= link_to "Vote", like_post_path(@post),
+        method: :put %>
+        <%= @post.get_likes.size %>
+</div>
+
 <div class="comments">
     <header>
         <h3> Comments: </h3>
