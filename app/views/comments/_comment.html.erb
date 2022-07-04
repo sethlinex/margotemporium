@@ -8,10 +8,12 @@
     </div>
     <ul class="actions">
       <li>
+      <% admins_only do %>
         <%= button_to "Delete Comment",
           admin_post_comment_path(comment.post, comment),
           method: :delete,
           data: { confirm: "Delete this comment?" } %>
+      <% end %>
       </li>
     </ul>
 </div>
