@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show] do
     resources :comments, only: [:create]
     member do
-      put "like", to: "posts#like"
+      get "like", to: "posts#like"
     end
   end
 

@@ -6,7 +6,11 @@ RSpec.feature "Admins can edit existing Margots" do
         FactoryBot.create(:post)
 
         visit "/"
-        click_link "Example Margot"
+
+        within(".posts") do
+            click_link "Example Margot"
+        end
+
     end
     
     scenario "to change the name (for now)" do

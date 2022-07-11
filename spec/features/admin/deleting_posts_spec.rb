@@ -9,7 +9,11 @@ RSpec.feature "Admins can delete existing Margots" do
         FactoryBot.create(:post)
 
         visit "/"
-        click_link "Example Margot"
+
+        within(".posts") do
+            click_link "Example Margot"
+        end
+        
         click_link "Remove this Margot"
 
         expect(page).to have_content "Margot successfully removed."

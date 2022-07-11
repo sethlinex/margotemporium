@@ -1,14 +1,31 @@
-<h1> Welcome to the Margot Emporium! </h1>
+<body>
+    <div class="logohofcontainer">
+    <%= image_tag("me_logo.png") %>
 
-<% admins_only do %>
+
+        <div class="hof">
+            <h2> ♛ The Hall of Fame! ♛ </h2>
+                <% @posts.each do |post| %>
+                    <% if post.get_likes.size == Post.maximum(:cached_votes_total) %>
+                        <p class="img"><%= link_to (image_tag post.image), post %></p><br>
+
+                        <p class="caption"><%= link_to post.name, post %></p>
+                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like!" : "likes!" %>
+                    <% end %>
+                <% end %>
+        </div>
+    </div>
+
+
+    <figure class="posts">
+        <% @posts.each do |post| %>
+            <%= link_to (image_tag post.image), post %>
+        <% end %>
+    </figure>
+
     <ul class="actions">
-        <li><%= link_to "New Margot", new_admin_post_path %></li>
+        <% admins_only do %>
+            <li><%= link_to "New Margot", new_admin_post_path %></li>
+        <% end %>
     </ul>
-<% end %>
-
-<div class="posts">
-    <% @posts.each do |post| %>
-        <%= link_to (image_tag post.image), post %>
-        <%= link_to post.name, post %>
-    <% end %>
-</div>
+</body>

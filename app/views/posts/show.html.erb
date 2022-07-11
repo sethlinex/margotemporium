@@ -1,13 +1,15 @@
 <div class="post">
     <%= @post.name %>
 
-    <%= image_tag @post.image %>
+    <p class="image"><%= image_tag @post.image %></p>
 </div>
 
 <div class="votes">
-    <%= link_to "Vote", like_post_path(@post),
-        method: :put %>
-        <%= @post.get_likes.size %>
+    <% users_only || admins_only do %>
+        <%= link_to "Vote", like_post_path(@post),
+            method: :get %>
+    <% end %>
+    <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "like" : "likes" %>
 </div>
 
 <div class="comments">
@@ -22,7 +24,9 @@
         <p> No comments yet! </p>
     <% end %>
 
-    <%= render "comments/form", post: @post, comment: @comment %>
+    <% users_only || admins_only do %>
+        <%= render "comments/form", post: @post, comment: @comment %>
+    <% end %>
 </div>
 
     <ul class="actions">

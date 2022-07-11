@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_193248) do
+ActiveRecord::Schema.define(version: 2022_07_05_202949) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2022_07_04_193248) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cached_votes_total", default: 0
+    t.index ["cached_votes_total"], name: "index_posts_on_cached_votes_total"
   end
 
   create_table "users", force: :cascade do |t|
