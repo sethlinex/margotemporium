@@ -11,18 +11,7 @@
   </head>
 
   <body>
-  <% unless user_signed_in? %>
-  <div class="actions">
-    <span class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></span> | <span class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></span>
-  </div>
-  <% end %>
-  <p>
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.username %>
-
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %>
-  <% end %>
-  </p>
+  
     <% flash.each do |key, message| %>
       <div><%= message %></div>
     <% end %>

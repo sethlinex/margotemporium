@@ -17,19 +17,59 @@ body {
     background-color: rgba(114, 155, 95, 0.897);
 }
 
- figure.posts, .logohofcontainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    img[src] {
-        max-width: 300px;
-        max-height: auto;
-        object-fit: contain;
-    }
-    .caption {
+.sidebar {
+    display: table-cell;
+    height: 100%;
+    width: 360px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    background-color: beige;
+    text-align: center;
+    border-right: 5px double grey;
 
-    }
+
+    figure.hof, .hoftext {
+        background-color: rgb(219, 165, 65);
+        border: 5px double grey;
+        border-bottom: none;
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 550px;
+        text-align: center;
     
+    
+        figcaption {
+            display: table-caption;
+            caption-side: bottom;
+            background-color: rgb(219, 165, 65);
+            border: 5px double grey;
+            border-top: none;
+            padding-top: none;
+            text-align: center;
+            font-size: xx-large;
+        }
+    
+        img[src] {
+            max-width: 300px;
+            max-height: auto;
+            object-fit: contain;
+            margin: 1em;
+        }
+    }
 }
+
+.posts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        img[src] {
+            max-width: 300px;
+            max-height: auto;
+            object-fit: contain;
+        } 
+    }    
 
 .post {
     img[src]{
@@ -39,18 +79,4 @@ body {
     }
 }
 
-.hof, .hoftext {
-    background-color: rgb(219, 165, 65);
-    border: 5px double grey;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    max-width: 400px;
 
-    img[src] {
-        max-width: 300px;
-        max-height: auto;
-        object-fit: contain;
-        margin: 1em;
-    }
-}

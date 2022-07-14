@@ -1,31 +1,41 @@
 <body>
-    <div class="logohofcontainer">
-    <%= image_tag("me_logo.png") %>
+    <div class="sidebar">
+       <h1> The Margot Emporium </h1>
 
 
-        <div class="hof">
+        <figure class="hof">
             <h2> ♛ The Hall of Fame! ♛ </h2>
                 <% @posts.each do |post| %>
                     <% if post.get_likes.size == Post.maximum(:cached_votes_total) %>
                         <p class="img"><%= link_to (image_tag post.image), post %></p><br>
 
-                        <p class="caption"><%= link_to post.name, post %></p>
-                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like!" : "likes!" %>
+                        <figcaption><%= link_to post.name, post %>
+                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like!" : "likes!" %></figcaption>
                     <% end %>
                 <% end %>
-        </div>
+        </figure>
+
+        <ul class="actions">
+            <% if user_signed_in? %>
+                Signed in as <%= current_user.username %>
+
+                <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+            
+            <% admins_only do %>
+                <li><%= link_to "New Margot", new_admin_post_path %></li>
+            <% end %>
+        </ul>
     </div>
 
+        <div class="posts">
+            <% @posts.each do |post| %>
+                <%= link_to (image_tag post.image), post %>
+            <% end %>
+        </div>
 
-    <figure class="posts">
-        <% @posts.each do |post| %>
-            <%= link_to (image_tag post.image), post %>
-        <% end %>
-    </figure>
-
-    <ul class="actions">
-        <% admins_only do %>
-            <li><%= link_to "New Margot", new_admin_post_path %></li>
-        <% end %>
-    </ul>
 </body>
