@@ -4,7 +4,6 @@
 
 <%= form_with model: [post, comment], local: true do |f| %>
     <p>
-        <%= f.label :text %>
         <%= f.text_area :text %>
     </p>
         <%= f.submit %>

@@ -14,67 +14,76 @@
  *= require_self
  */
 body {
-    background-color: rgba(114, 155, 95, 0.897);
-}
+    background-color: rgba(214, 223, 210, 0.897);
+    display: block;
+    margin: 0;
 
-.sidebar {
-    display: table-cell;
-    height: 100%;
-    width: 360px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-    background-color: beige;
-    text-align: center;
-    border-right: 5px double grey;
-
-
-    figure.hof, .hoftext {
-        background-color: rgb(219, 165, 65);
-        border: 5px double grey;
-        border-bottom: none;
-        display: table;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 550px;
+    .sidebar {
+        display: block;
+        height: 980px;
+        width: 320px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 20px;
+        background-color: rgba(180, 221, 226, 0.842);
         text-align: center;
+        border-right: 5px double grey;
+        float: left;
     
     
-        figcaption {
-            display: table-caption;
-            caption-side: bottom;
-            background-color: rgb(219, 165, 65);
-            border: 5px double grey;
-            border-top: none;
-            padding-top: none;
+        figure.hof {
+            background-color: rgba(240, 234, 157, 0.897);
+            border: 5px double rgb(228, 187, 99);
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 260px;
             text-align: center;
-            font-size: xx-large;
+            margin-bottom: 12px;
+        
+        
+            figcaption {
+                display: table-caption;
+                caption-side: bottom;
+                background-color: rgba(240, 234, 157, 0.897);
+                border: 5px double rgb(228, 187, 99);
+                text-align: center;
+                font-size: xx-large;
+                margin-top: 12px;
+            }
+        
+            img[src] {
+                max-width: 250px;
+                height: auto;
+                object-fit: contain;
+                margin: 1em;
+            }
         }
-    
-        img[src] {
-            max-width: 300px;
-            max-height: auto;
-            object-fit: contain;
-            margin: 1em;
-        }
+    }
+    .content {
+        float: left;
+        text-align: justify;
+        
+        .posts {
+            position: fixed;
+            margin: 20px;
+            left: 320px;
+
+            img[src] {
+                max-width: 250px;
+                height: auto;
+                object-fit: contain;
+                margin: 20.5px;
+            } 
+        }    
     }
 }
 
-.posts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        img[src] {
-            max-width: 300px;
-            max-height: auto;
-            object-fit: contain;
-        } 
-    }    
-
 .post {
     img[src]{
-        max-width: 300px;
-        max-height: auto;
+        max-width: 400px;
+        height: auto;
         object-fit: contain;
     }
 }

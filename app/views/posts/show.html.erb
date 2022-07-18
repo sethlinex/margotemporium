@@ -34,7 +34,7 @@
 
         <% admins_only do %>
             <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
-            <li><%= button_to "Remove this Margot", admin_post_path(@post),
+            <li><%= link_to "Remove this Margot", admin_post_path(@post),
             method: :delete,
             data: { confirm: "Do you want to remove this Margot?" } %></li>
         <% end %>

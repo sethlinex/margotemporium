@@ -1,7 +1,7 @@
 <div class="comment">
     <div class="author">
         <%= time_ago_in_words(comment.created_at) %> ago 
-        &mdash; <%= comment.author %>
+        &mdash; <%= comment.author.username %>
     </div>
     <div class="text">
         <%= simple_format(comment.text) %>
@@ -9,10 +9,9 @@
     <ul class="actions">
       <li>
       <% admins_only do %>
-        <%= button_to "Delete Comment",
+        <%= link_to "Delete Comment",
           admin_post_comment_path(comment.post, comment),
-          method: :delete,
-          data: { confirm: "Delete this comment?" } %>
+          data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
       <% end %>
       </li>
     </ul>

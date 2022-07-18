@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7.3'
 # Use for adding the ability to vote on models
 gem 'acts_as_votable'
+gem 'jquery-rails'
 
 
 # Use Active Storage variant
