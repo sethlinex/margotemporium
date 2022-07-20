@@ -11,9 +11,9 @@ RSpec.feature "Admins can remove comments from Margot posts" do
     visit post_path(post)
 
     within(".comments") do
-      fill_in "Text", with: "Added a comment!"
+      fill_in with: "Added a comment!"
       click_button "Create Comment"
-      click_button "Delete Comment"
+      click_link "Delete Comment"
     end
 
     expect(page).to have_content "Comment removed successfully."
@@ -24,7 +24,7 @@ RSpec.feature "Admins can remove comments from Margot posts" do
     visit post_path(post)
 
     within(".comments") do
-      fill_in "Text", with: "Added a comment!"
+      fill_in with: "Added a comment!"
       click_button "Create Comment"
 
       expect(page).to have_content "Added a comment!"

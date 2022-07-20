@@ -12,7 +12,7 @@ RSpec.feature "Users can comment on Margot posts" do
         visit post_path(post)
 
         within(".comments") do
-            fill_in "Text", with: "Added a comment!"
+            fill_in with: "Added a comment!"
             click_button "Create Comment"
         end
 

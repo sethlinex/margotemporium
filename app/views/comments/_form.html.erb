@@ -3,8 +3,8 @@
 </header>
 
 <%= form_with model: [post, comment], local: true do |f| %>
-    <p>
-        <%= f.text_area :text %>
-    </p>
+    <div>
+        <%= f.text_area :text, label: "comment" %>
+    </div>
         <%= f.submit %>
 <% end %>

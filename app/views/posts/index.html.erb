@@ -5,16 +5,17 @@
 
         <figure class="hof">
             <h3> ♛ The Hall of Fame! ♛ </h3>
-                <% @posts.each do |post| %>
-                    <% if post.get_likes.size == Post.maximum(:cached_votes_total) %>
-                        <p class="img"><%= link_to (image_tag post.image), post %></p>
+            <% if Post.maximum(:cached_votes_total) == 0 %>
+                There is no Hall of Famer at the moment!
+            <% elsif post = Post.find_by(cached_votes_total:Post.maximum(:cached_votes_total)) %>
 
-                        <figcaption><%= link_to post.name, post %>
-                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "like!" : "likes!" %></figcaption>
-                    <% end %>
-                    <% break %>
-                <% end %>
+                    <p class="img"><%= link_to (image_tag post.image), post %></p>
+
+                    <figcaption><%= link_to post.name, post %>
+                    with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></figcaption>
+            <% end %>
         </figure>
+
 
         <ul class="actions">
             <% if user_signed_in? %>
@@ -37,6 +38,7 @@
         <div class="posts">
             <% @posts.each do |post| %>
                 <%= link_to (image_tag post.image), post %>
+                <%= link_to post.name, post %>
             <% end %>
         </div>
     </div>

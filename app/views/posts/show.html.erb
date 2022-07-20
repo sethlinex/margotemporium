@@ -5,11 +5,11 @@
 </div>
 
 <div class="votes">
-    <% users_only || admins_only do %>
-        <%= link_to "Vote", like_post_path(@post),
+    <% users_only do %>
+        <%= button_to "Vote", like_post_path(@post),
             method: :get %>
     <% end %>
-    <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "like" : "likes" %>
+    <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %>
 </div>
 
 <div class="comments">
@@ -24,7 +24,7 @@
         <p> No comments yet! </p>
     <% end %>
 
-    <% users_only || admins_only do %>
+    <% users_only do %>
         <%= render "comments/form", post: @post, comment: @comment %>
     <% end %>
 </div>

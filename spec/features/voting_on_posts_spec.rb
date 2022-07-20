@@ -8,29 +8,37 @@ RSpec.feature "Users can vote on Margot posts" do
 
     before do
         login_as(user)
+
+        visit post_path(post_1)
+
+        click_button "Vote"
     end
 
     scenario "by clicking a link" do
-        visit post_path(post_1)
-
-        click_link "Vote"
 
         within(".votes") do
-            expect(page).to have_content "1"
+            expect(page).to have_content "1 vote!"
         end
     end
 
     scenario "posts with the most votes show up at the top" do
-        visit post_path(post_1)
-
-        click_link "Vote"
 
         visit "/"
 
         within(".hof") do
             expect(page).to have_content "Chi Ball"
-            expect(page).to have_content "with 1 like!"
+            expect(page).to have_content "with 1 vote!"
             expect(page).not_to have_content "Dragonmode"
         end
     end
+
+    # scenario "clicking the button again takes the vote away" do
+
+    # click_button "Unvote"
+
+    # within(".votes") do
+    #     expect(page).to have_content "0 votes!"
+    # end
+        
+    # end
 end
