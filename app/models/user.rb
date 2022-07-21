@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, uniqueness: true
   validates :username, uniqueness: true
+  acts_as_voter
 
   def email_changed?
     false

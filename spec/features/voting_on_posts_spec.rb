@@ -32,13 +32,13 @@ RSpec.feature "Users can vote on Margot posts" do
         end
     end
 
-    # scenario "clicking the button again takes the vote away" do
+    scenario "clicking the button again takes the vote away" do
 
-    # click_button "Unvote"
+    click_button "Unvote"
 
-    # within(".votes") do
-    #     expect(page).to have_content "0 votes!"
-    # end
+    within(".votes") do
+        expect(page).to have_content "0 votes!"
+    end
         
-    # end
+    end
 end

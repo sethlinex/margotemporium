@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: %i(show like)
+    before_action :set_post, only: %i(show like unlike)
 
     def index
         @posts = Post.all
@@ -11,6 +11,11 @@ class PostsController < ApplicationController
 
     def like
         @post.like_by current_user
+        redirect_to @post
+    end
+
+    def unlike
+        @post.unliked_by current_user
         redirect_to @post
     end
 
