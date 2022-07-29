@@ -10,8 +10,9 @@ RSpec.feature "Users can vote on Margot posts" do
         login_as(user)
 
         visit post_path(post_1)
-
-        click_button "Vote"
+        within(".votes") do
+            find("img[src*='votebtn.png']").click
+        end
     end
 
     scenario "by clicking a link" do
@@ -34,7 +35,7 @@ RSpec.feature "Users can vote on Margot posts" do
 
     scenario "clicking the button again takes the vote away" do
 
-    click_button "Unvote"
+    find("img[src*='unvotebtn.png']").click
 
     within(".votes") do
         expect(page).to have_content "0 votes!"

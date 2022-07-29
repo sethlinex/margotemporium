@@ -6,13 +6,9 @@
     <div class="text">
         <%= simple_format(comment.text) %>
     </div>
-    <ul class="actions">
-      <li>
       <% admins_only do %>
         <%= link_to "Delete Comment",
           admin_post_comment_path(comment.post, comment),
           data: { turbo_method: :delete, turbo_confirm: "Delete this comment?" } %>
       <% end %>
-      </li>
-    </ul>
 </div>

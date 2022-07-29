@@ -1,50 +1,58 @@
-<div class="post">
-    <%= @post.name %>
+<div class="post"> 
+    <div class="sidebar-left">
+       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
 
-    <p class="image"><%= image_tag @post.image %></p>
-</div>
+        <div class="votes">
+            <td class="count"> <%= @post.name %> has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
+            <% users_only do %>
+                <% if current_user.liked? @post %>
+                            <div class="unvote"> <%= link_to image_tag("/assets/unvotebtn.png"), unlike_post_path(@post),
+                            method: :get %> </div>
+                        <% else %>
+                            <div class="vote"><%= link_to image_tag("/assets/votebtn.png"), like_post_path(@post),
+                            method: :get %> </div>
+                <% end %>
+            <% end %>
+        </div>
 
-<div class="votes">
-    This post has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %>
-    <% users_only do %>
-        <% if current_user.liked? @post %>
-            <%= image_tag("/assets/unvotebtn.png") %>
+            <% if user_signed_in? %>
+                Signed in as <%= current_user.username %>.
 
-                <div class="unvote"> <%= button_to "Unvote?", unlike_post_path(@post),
-                method: :get %>  </div>
-        <% else %>
-            <%= image_tag("/assets/votebtn.png") %>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger m1-1" %></li>
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="<%= "active" if current_page?("/users/sign_up") %>"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="<%= "active" if current_page?("/users/sign_in") %>"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
             
-                <div class="vote"><%= button_to "Vote!", like_post_path(@post),
-                method: :get %> </div>
-        <% end %>
-    <% end %>
+            <% admins_only do %>
+                <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
+                <li><%= link_to "Remove this Margot", admin_post_path(@post),
+                method: :delete,
+                data: { confirm: "Do you want to remove this Margot?" } %></li>
+            <% end %>
+
+            <li><%= link_to "Return to the Emporium...", posts_path %></li>
+    </div>
+
+    <div class="sidebar-right">
+        <div class="comments">
+            <header> <h3> Comments: </h3> </header>
+
+            <% comments = @post.comments.persisted.ordered %>
+                <% if comments.any? %>
+                    <%= render comments %>
+                <% else %>
+                    <p> No comments yet! </p>
+                <% end %>
+
+            <% users_only do %>
+                <%= render "comments/form", post: @post, comment: @comment %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="content">
+        <p class="image"><%= image_tag @post.image %></p>
+    </div>
 </div>
-
-<div class="comments">
-    <header>
-        <h3> Comments: </h3>
-    </header>
-
-    <% comments = @post.comments.persisted.ordered %>
-    <% if comments.any? %>
-        <%= render comments %>
-    <% else %>
-        <p> No comments yet! </p>
-    <% end %>
-
-    <% users_only do %>
-        <%= render "comments/form", post: @post, comment: @comment %>
-    <% end %>
-</div>
-
-    <ul class="actions">
-        <li><%= link_to "Return to the Emporium...", posts_path %></li>
-
-        <% admins_only do %>
-            <li><%= link_to "Edit this Margot", edit_admin_post_path(@post) %></li>
-            <li><%= link_to "Remove this Margot", admin_post_path(@post),
-            method: :delete,
-            data: { confirm: "Do you want to remove this Margot?" } %></li>
-        <% end %>
-    </ul>

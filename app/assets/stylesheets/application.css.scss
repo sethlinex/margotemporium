@@ -14,78 +14,152 @@
  *= require_self
  */
 body {
-    background-color: rgba(214, 223, 210, 0.897);
+    background-color: rgba(180, 221, 226, 0.842);
     display: block;
     margin: 0;
 
-    .sidebar {
-        display: block;
-        height: 980px;
-        width: 320px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding-top: 20px;
-        background-color: rgba(180, 221, 226, 0.842);
-        text-align: center;
-        border-right: 5px double grey;
-        float: left;
-    
-    
-        figure.hof {
-            background-color: rgba(240, 234, 157, 0.897);
-            border: 5px double rgb(228, 187, 99);
-            display: table;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 260px;
+        .sidebar-left {
+            border-right: 5px double rgba(240, 234, 157, 0.897);
+            float: left;
+            left: 0;
+            display: block;
+            height: 980px;
+            width: 260px;
+            position: fixed;
+            top: 0;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 12px;
+            background-color: rgb(218, 211, 211);
+        }
+    
+        .sidebar-right {
+            border-left: 5px double rgb(218, 211, 211);
+            float: right;
+            right: 0;
+            display: block;
+            height: 980px;
+            width: 260px;
+            position: fixed;
+            top: 0;
+            padding: 30px;
+            padding-left: 10px;
+            padding-top: 0px;
+            background-color: rgba(240, 234, 157, 0.897);
+            text-align: center;
         
-        
-            figcaption {
-                display: table-caption;
-                caption-side: bottom;
-                background-color: rgba(240, 234, 157, 0.897);
-                border: 5px double rgb(228, 187, 99);
+            figure.hof {
+                display: table;
                 text-align: center;
-                font-size: xx-large;
-                margin-top: 12px;
-            }
-        
-            img[src] {
-                max-width: 250px;
-                height: auto;
-                object-fit: contain;
-                margin: 1em;
+                border: none;
+                margin: 20px;
+            
+                figcaption {
+                    display: table-caption;
+                    caption-side: bottom;
+                    text-align: center;
+                }
+            
+                img[src] {
+                    max-width: 240px;
+                    height: auto;
+                    object-fit: contain;
+                }
             }
         }
     }
+
     .content {
-        float: left;
-        text-align: justify;
-        
-        .posts {
-            position: fixed;
-            margin: 20px;
-            left: 320px;
+        max-width: 1328px;
+
+            figure.posts {
+                display: inline-grid;
+                grid-auto-columns: max-content;
+                text-align: center;
+                border: none;
+                position: relative;
+                left: 320px;
+                right: 320px;
+                margin: 10px;
+                margin-left: 1px;
+                align-content: center;
+            
+                figcaption {
+                    display: table-caption;
+                    caption-side: bottom;
+                }
 
             img[src] {
-                max-width: 250px;
+                max-width: 275px;
                 height: auto;
                 object-fit: contain;
-                margin: 20.5px;
             } 
         }    
     }
-}
+
 
 .post {
-    img[src]{
-        max-width: 400px;
-        height: auto;
-        object-fit: contain;
+    display: block;
+    align-content: center;
+    text-align: center;
+
+    .sidebar-left {
+        border-right: 5px double rgba(240, 234, 157, 0.897);
+        float: left;
+        left: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        background-color: rgb(218, 211, 211);
+
+        .votes {
+            padding-bottom: 125px;
+            padding-top: 125px;
+        }
+    }
+
+    .sidebar-right {
+        border-left: 5px double rgb(218, 211, 211);
+        float: right;
+        right: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 30px;
+        padding-top: 0px;
+        background-color: rgba(240, 234, 157, 0.897);
+        text-align: center;
+    }
+
+    .content {
+        left: 320px;
+        right: 320px;
+        position: relative;
+
+        img[src]{
+            left: 260px;
+            max-width: 560px;
+            height: auto;
+            object-fit: contain;
+        }
     }
 }
 
+.comment {
+    text-align: center;
+    background-color: rgba(180, 221, 226, 0.842);
+    border: 5px double grey;
+    max-width: 350px;
+    .author {
+        border: 5px double grey;
+    }
+
+    .text {
+        list-style: none;
+    }
+}
 
