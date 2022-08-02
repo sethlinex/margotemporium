@@ -20,18 +20,22 @@
     </div>
 
     <div class="sidebar-right">
-        <figure class="hof">
-            <% if Post.maximum(:cached_votes_total) == 0 %>
-                There is no Hall of Famer at the moment!
-            <% elsif post = Post.find_by(cached_votes_total:Post.maximum(:cached_votes_total)) %>
+        <div class="allhof">
+            <figure class="hof">
+                <% if Post.maximum(:cached_votes_total) == 0 %>
+                    There is no Hall of Famer at the moment!
+                <% elsif post = Post.find_by(cached_votes_total:Post.maximum(:cached_votes_total)) %>
+                    <% last = Post.order("cached_votes_total DESC").last %>
+                        <p class="img"><%= link_to (image_tag post.image), post %></p>
+                        <h3>  The Hall of Famer  <br>
+                        with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></h3> 
+                        
 
-                    <p class="img"><%= link_to (image_tag post.image), post %></p>
-
-                    <figcaption><%= link_to post.name, post %>
-                    with <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %></figcaption>
-            <% end %>
-            <h3> ♛ The Hall of Fame! ♛ </h3> 
-        </figure>
+                    Last place is <%= last.name %> with <%= last.get_likes.size %>!
+                    <p class="img"><%= link_to (image_tag last.image), last %></p>
+                <% end %>
+            </figure>
+        </div>
     </div>
 
     <div class="content">

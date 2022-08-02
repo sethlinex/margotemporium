@@ -18,83 +18,88 @@ body {
     display: block;
     margin: 0;
 
-        .sidebar-left {
-            border-right: 5px double rgba(240, 234, 157, 0.897);
-            float: left;
-            left: 0;
-            display: block;
-            height: 980px;
-            width: 260px;
-            position: fixed;
-            top: 0;
-            padding: 20px;
-            text-align: center;
-            background-color: rgb(218, 211, 211);
-        }
-    
-        .sidebar-right {
-            border-left: 5px double rgb(218, 211, 211);
-            float: right;
-            right: 0;
-            display: block;
-            height: 980px;
-            width: 260px;
-            position: fixed;
-            top: 0;
-            padding: 30px;
-            padding-left: 10px;
-            padding-top: 0px;
-            background-color: rgba(240, 234, 157, 0.897);
-            text-align: center;
-        
+    .sidebar-left {
+        border-right: 5px double rgba(240, 234, 157, 0.897);
+        float: left;
+        left: 0;
+        display: block;
+        height: 980px;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        text-align: center;
+        background-color: rgb(218, 211, 211);
+    }
+
+    .sidebar-right {
+        border-left: 5px double rgb(218, 211, 211);
+        float: right;
+        right: 0;
+        display: flex;
+        height: 1fr;
+        width: 260px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        padding-top: 0px;
+        background-color: rgba(240, 234, 157, 0.897);
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+
+        .allhof {
+            
             figure.hof {
                 display: table;
                 text-align: center;
                 border: none;
-                margin: 20px;
-            
+                // margin: 20px;
+                
+
                 figcaption {
                     display: table-caption;
                     caption-side: bottom;
                     text-align: center;
                 }
-            
+
                 img[src] {
-                    max-width: 240px;
+                    max-width: 220px;
                     height: auto;
                     object-fit: contain;
                 }
             }
         }
     }
+}
 
-    .content {
-        max-width: 1328px;
+.content {
+    max-width: 1328px;
 
-            figure.posts {
-                display: inline-grid;
-                grid-auto-columns: max-content;
-                text-align: center;
-                border: none;
-                position: relative;
-                left: 320px;
-                right: 320px;
-                margin: 10px;
-                margin-left: 1px;
-                align-content: center;
-            
-                figcaption {
-                    display: table-caption;
-                    caption-side: bottom;
-                }
+    figure.posts {
+        display: inline-grid;
+        grid-auto-columns: max-content;
+        text-align: center;
+        border: none;
+        position: relative;
+        left: 320px;
+        right: 320px;
+        margin: 10px;
+        margin-left: 1px;
+        align-content: center;
 
-            img[src] {
-                max-width: 275px;
-                height: auto;
-                object-fit: contain;
-            } 
-        }    
+        figcaption {
+            display: table-caption;
+            caption-side: bottom;
+        }
+
+        img[src] {
+            max-width: 275px;
+            height: auto;
+            object-fit: contain;
+        }
     }
+}
 
 
 .post {
@@ -115,8 +120,7 @@ body {
         background-color: rgb(218, 211, 211);
 
         .votes {
-            padding-bottom: 125px;
-            padding-top: 125px;
+            padding-top: 0px;
         }
     }
 
@@ -131,7 +135,7 @@ body {
         top: 0;
         padding: 30px;
         padding-top: 0px;
-        background-color: rgba(240, 234, 157, 0.897);
+        background-color: rgb(255, 255, 255);
         text-align: center;
     }
 
@@ -140,7 +144,7 @@ body {
         right: 320px;
         position: relative;
 
-        img[src]{
+        img[src] {
             left: 260px;
             max-width: 560px;
             height: auto;
@@ -151,15 +155,18 @@ body {
 
 .comment {
     text-align: center;
-    background-color: rgba(180, 221, 226, 0.842);
-    border: 5px double grey;
+    background-color: rgba(240, 234, 157, 0.897);
+    border: 5px double rgb(218, 211, 211);
     max-width: 350px;
+    margin: 20px 20px;
+    padding: 5px;
+
     .author {
-        border: 5px double grey;
+        background-color: rgba(180, 221, 226, 0.842);
+        background-size: cover;
     }
 
     .text {
         list-style: none;
     }
 }
-

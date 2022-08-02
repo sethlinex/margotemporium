@@ -1,7 +1,5 @@
 <div class="post"> 
     <div class="sidebar-left">
-       <p class="logo"> <%= link_to image_tag("/assets/me_logo.png"), posts_path %> </p>
-
         <div class="votes">
             <td class="count"> <%= @post.name %> has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
             <% users_only do %>
