@@ -4,10 +4,10 @@
             <td class="count"> <%= @post.name %> has <%= @post.get_likes.size %> <%= (@post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
             <% users_only do %>
                 <% if current_user.liked? @post %>
-                            <div class="unvote"> <%= link_to image_tag("/assets/unvotebtn.png"), unlike_post_path(@post),
+                            <div class="unvote"> <%= link_to image_tag("/assets/unvotebtn.png", alt: "unvote"), unlike_post_path(@post),
                             method: :get %> </div>
                         <% else %>
-                            <div class="vote"><%= link_to image_tag("/assets/votebtn.png"), like_post_path(@post),
+                            <div class="vote"><%= link_to image_tag("/assets/votebtn.png", alt: "vote"), like_post_path(@post),
                             method: :get %> </div>
                 <% end %>
             <% end %>

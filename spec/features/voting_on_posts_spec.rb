@@ -10,19 +10,19 @@ RSpec.feature "Users can vote on Margot posts" do
         login_as(user)
 
         visit post_path(post_1)
-        within(".votes") do
-            find("img[src*='votebtn.png']").click
-        end
     end
 
     scenario "by clicking a link" do
 
         within(".votes") do
+            click_link('vote')
             expect(page).to have_content "1 vote!"
         end
     end
 
     scenario "posts with the most votes show up at the top" do
+
+        click_link('vote')
 
         visit "/"
 
@@ -34,12 +34,13 @@ RSpec.feature "Users can vote on Margot posts" do
     end
 
     scenario "clicking the button again takes the vote away" do
+    
+        click_link('vote')
 
-    find("img[src*='unvotebtn.png']").click
+        click_link('unvote')
 
-    within(".votes") do
-        expect(page).to have_content "0 votes!"
-    end
-        
+        within(".votes") do
+            expect(page).to have_content "0 votes!"
+        end
     end
 end
