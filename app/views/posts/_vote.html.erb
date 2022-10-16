@@ -1,7 +1,6 @@
-<% if current_user.liked? @post %>
-            <div class="unvote"> <%= link_to image_tag("/assets/unvotebtn.png"), unlike_post_path(@post),
-            method: :get, remote: true %>  </div>
-        <% else %>
-            <%= link_to image_tag("/assets/votebtn.png"), like_post_path(@post),
-            method: :get, remote: true %>
+<%= turbo_stream_from "post" %>
+
+<%= turbo_frame_tag "vote" do %>
+    <td class="count"> <%= post.name %> has <%= post.get_likes.size %> <%= (post.get_likes.size) == 1 ? "vote!" : "votes!" %> </td>
+    <button id="vote"><%= link_to image_tag("/assets/votebtn.png", alt: "vote"), like_post_path(post), method: :post, data: { turbo_frame: "vote" } %> </button>
 <% end %>

@@ -11,12 +11,21 @@ class PostsController < ApplicationController
 
     def like
         @post.like_by current_user
-        redirect_to @post
+
+        respond_to do |f|
+            f.html { redirect_to post_path }
+            f.turbo_stream
+        end
+
     end
 
     def unlike
         @post.unliked_by current_user
-        redirect_to @post
+
+        respond_to do |f|
+            f.html { redirect_to post_path }
+            f.turbo_stream
+        end
     end
 
     private
